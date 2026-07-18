@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Chi-square tests for categorical features vs Churn.
-"""
+""" Module for performing chi-square tests. """
 
 import pandas as pd
 from scipy import stats
@@ -9,28 +7,23 @@ from scipy import stats
 
 def chi_square_tests(df):
     """
-    Compute Chi-square p-values for categorical columns only.
+    Perform chi-square test for independence between each categorical feature
+    and the target variable 'Churn'.
 
     Args:
-        df (pd.DataFrame): DataFrame containing Churn and categorical columns.
+        df : DataFrame containing a 'Churn' column.
 
     Returns:
-        dict: {feature_name: p_value}
+        dict: {feature_name: p_value} for each categorical feature.
     """
-
     results = {}
-    target = 'Churn'
 
-    # Select only categorical columns
-    categorical_cols = df.select_dtypes(include=['object', 'category', 'bool']).columns
+    features = [col for col in df.columns if
+                df[col].dtype == 'object' and col != 'Churn']
 
-    for col in categorical_cols:
-        if col == target:
-            continue
-
-        contingency_table = pd.crosstab(df[col], df[target])
-        _, p_value, _, _ = stats.chi2_contingency(contingency_table)
-
-        results[col] = p_value
+    for feature in features:
+        con_tab = pd.crosstab(df[feature], df['Churn'])
+        chi2, p, dof, expected = stats.chi2_contingency(con_tab)
+        results[feature] = p
 
     return results
