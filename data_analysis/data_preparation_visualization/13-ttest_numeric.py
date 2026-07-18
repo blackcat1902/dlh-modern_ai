@@ -18,8 +18,8 @@ def ttest_numeric(df):
     between the two groups are significantly different.
 
     Args:
-        df (pd.DataFrame): The input DataFrame containing numeric features and a
-          'Churn' column.
+        df (pd.DataFrame): The input DataFrame containing numeric features and
+          a 'Churn' column.
 
     Returns:
         dict: A dictionary where keys are feature names and values are the
