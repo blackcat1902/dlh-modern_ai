@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-import pandas as pd
+"""Module that provides a function to compute Welch's t-tests.
+
+This module inspects continuous numeric features in a pandas DataFrame
+to determine if their means differ significantly between customer groups
+defined by the 'Churn' status.
+"""
 from scipy import stats
 
 
 def ttest_numeric(df):
-    """Performs Welch's t-tests for continuous numeric features against the Churn
-
-    status.
+    """Performs Welch's t-tests for continuous numeric features against Churn.
 
     This function separates the dataset into two distinct groups based on the
     'Churn' column ('Yes' vs 'No'). It then iterates through all continuous
@@ -34,7 +37,7 @@ def ttest_numeric(df):
 
     # Perform Welch's t-test for each numeric column
     for col in numeric_cols:
-        # equal_var=False specifies Welch's t-test instead of the standard Student's t-test
+        # equal_var=False specifies Welch's t-test
         t_stat, p_value = stats.ttest_ind(
             churn_yes[col], churn_no[col], equal_var=False
         )
