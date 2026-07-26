@@ -1,27 +1,23 @@
 #!/usr/bin/env python3
-"""
-Module for fetching HTML content from a given URL using the requests library.
-"""
-import requests
+"""Module that provides a function to build a Decision Tree Classifier."""
+from sklearn import tree
 
 
-def fetch_html(url, headers=None, timeout=10):
-    """
-    Fetches the HTML content of a web page.
+def build_decision_tree(min_samples_leaf, min_samples_split, random_state):
+    """Build and return a DecisionTreeClassifier instance.
 
     Args:
-        url (str): The URL of the page to retrieve.
-        headers (dict, optional): HTTP headers to send with the request.
-        timeout (int): The number of seconds to wait before aborting.
+        min_samples_leaf (int): Min samples at a leaf node.
+        min_samples_split (int): Min samples to split an internal node.
+        random_state (int): Seed for reproducibility.
 
     Returns:
-        str: The full HTML content of the response as a string.
+        tree.DecisionTreeClassifier: The configured decision tree model.
     """
-    # Send the GET request with the optional headers and timeout
-    response = requests.get(url, headers=headers, timeout=timeout)
-    
-    # Automatically raise an exception if the HTTP status code is >= 400
-    response.raise_for_status()
-    
-    # Return the full HTML of the response as a string
-    return response.text
+    model = tree.DecisionTreeClassifier(
+        criterion='gini',
+        min_samples_leaf=min_samples_leaf,
+        min_samples_split=min_samples_split,
+        random_state=random_state
+    )
+    return model
