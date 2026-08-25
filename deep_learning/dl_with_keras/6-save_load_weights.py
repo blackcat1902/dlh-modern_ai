@@ -17,3 +17,4 @@ def load_model_weights(model, filepath):
     Git saved weights to the model
     """
     model.load_weights(filepath)
+    
