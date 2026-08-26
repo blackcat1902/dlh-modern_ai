@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Show what is adapting for different optimizers named:
-- 'sgd': Stochastic Gradient Descent
+- 'sgd': Stochastic Gradient Descen
 - 'adam': Adaptive Moment Estimation
 - 'rmsprop': Root Mean Square Propagation
 """
@@ -55,4 +55,3 @@ def get_optimizer(
         )
     else:
         raise ValueError('Check function doc for name values')
-    
