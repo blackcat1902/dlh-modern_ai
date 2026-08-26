@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Summary of the Descision Tree 
+Summary of the Descision Tree
 """
 from sklearn import tree
 

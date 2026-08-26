@@ -40,4 +40,3 @@ def compare_boosting_classifiers(
         )
     else:
         raise ValueError(f"Unknown model name '{name}'")
-    
