@@ -17,4 +17,3 @@ def compile_model(model, learning_rate=0.01):
         loss='binary_crossentropy',
         metrics=['accuracy']
     )
-    

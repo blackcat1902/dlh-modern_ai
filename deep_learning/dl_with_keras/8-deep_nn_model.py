@@ -2,7 +2,7 @@
 """
 Build a deep Neural Network using
 Sequential class
-keras library 
+keras library
 """
 from tensorflow import keras
 
