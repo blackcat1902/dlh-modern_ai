@@ -40,7 +40,7 @@ def scroll_and_scrape(url, scroll_pause=0.2):
                 stable_rounds += 1
             else:
                 stable_rounds = 0
-                last_count = current_count
+                last_count = current_coun
 
             if stable_rounds >= 10:
                 break
@@ -91,4 +91,3 @@ def scroll_and_scrape(url, scroll_pause=0.2):
         return products
     finally:
         driver.quit()
-        

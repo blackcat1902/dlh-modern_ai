@@ -54,4 +54,3 @@ def login_and_scrape(login_url, user, pwd):
             })
 
         return quotes_data
-    
