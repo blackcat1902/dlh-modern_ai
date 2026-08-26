@@ -40,7 +40,7 @@ def scroll_and_scrape(url, scroll_pause=0.2):
                 stable_rounds += 1
             else:
                 stable_rounds = 0
-                last_count = current_coun
+                last_count = current_count
 
             if stable_rounds >= 10:
                 break
