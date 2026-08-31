@@ -26,7 +26,7 @@ def create_cnn_model(input_shape, filters, kernel_sizes, activations,
 
         model.add(keras.layers.Conv2D(
             filters_i, kernel_size, activation=activation))
-        model.add(pooling_layer())
+        model.add(pooling_layer(2))
 
     model.add(keras.layers.Flatten())
     model.add(keras.layers.Dense(10))
