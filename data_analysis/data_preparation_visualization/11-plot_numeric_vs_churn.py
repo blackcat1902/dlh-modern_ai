@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module for comparing numeric feature distributions by churn status.
 """
-import matplotlib.pyplot as pl
+import matplotlib.pyplot as plt
 
 
 def plot_numeric_vs_churn(df, col):
