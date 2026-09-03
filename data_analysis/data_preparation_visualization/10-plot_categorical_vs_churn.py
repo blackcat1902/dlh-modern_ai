@@ -1,25 +1,29 @@
 #!/usr/bin/env python3
 """ Module for plotting churn rate per category for a categorical column.
 """
+import pandas as pt
 import matplotlib.pyplot as plt
 
 
 def plot_categorical_vs_churn(df, col):
-    """ Plot churn rate per category in a categorical column.
-
-    Args:
-        df : DataFrame containing a 'Churn' column.
-        col : Name of the categorical column to analyze.
-
-    Returns:
-        None
     """
+    Compare given column with Churn
+    plotting churn rate
+    """
+
+    # Churn rate (Yes proportion) per category
+    churn_rate = (df['Churn'] == 'Yes'
+                  ).astype(int
+                           ).groupby(df[col]
+                                     ).mean()
+
     plt.figure(figsize=(12, 8))
-    churn_rates = df.groupby(col)['Churn'].apply(lambda x: (x == 'Yes').mean())
-    plt.bar(churn_rates.index, churn_rates.values, width=0.8)
-    plt.title(f"Churn Rate by {col}")
-    plt.ylabel("Churn Rate")
+
+    plt.bar(churn_rate.index, churn_rate.values)
+
+    plt.title(f'Churn Rate by {col}')
+    plt.ylabel('Churn Rate')
     plt.xticks(rotation=45)
+
     plt.show()
-    return None
     

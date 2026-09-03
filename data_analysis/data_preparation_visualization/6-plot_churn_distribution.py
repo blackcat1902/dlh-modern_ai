@@ -1,29 +1,19 @@
 #!/usr/bin/env python3
 """ Module for plotting the distribution of the target variable Churn. """
-
 import matplotlib.pyplot as plt
 
 
 def plot_churn_distribution(df):
-    """ Plot a bar chart of churn class distribution.
-
-    Args:
-        df (pandas.DataFrame): DataFrame containing a 'Churn' column.
-
-    Returns:
-        None
-    """
+    """plotting churn distb."""
     plt.figure(figsize=(12, 8))
-
-    churn_counts = df['Churn'].value_counts()
-    churn_counts = churn_counts.reindex(['No', 'Yes'])
-
-    colors = ['skyblue', 'salmon']
-
-    plt.bar(churn_counts.index, churn_counts.values, color=colors)
-
-    plt.ylabel('Count')
     plt.title('Churn Distribution')
-    plt.show()
+    plt.ylabel('Count')
 
-    return None
+    colour_map = {'yes': 'salmon', 'no': 'skyblue'}
+
+    counts = df['Churn'].value_counts()
+    colours = counts.index.str.lower().map(colour_map)
+
+    plt.bar(counts.index, counts.values, color=colours)
+    plt.savefig('churn_dist')
+    plt.show()

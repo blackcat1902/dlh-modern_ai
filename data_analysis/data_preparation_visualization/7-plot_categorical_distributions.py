@@ -1,51 +1,39 @@
 #!/usr/bin/env python3
-""" Module for plotting categorical feature distributions.
+""" Module for plotting continuous numerical feature distributions.
 """
 import matplotlib.pyplot as plt
 
 
 def plot_categorical_distributions(df, columns_to_plot=None):
-    """ Plot bar charts for categorical features in a grid layout.
-
-    Args:
-        df : Input DataFrame.
-        columns_to_plot : List of column names to plot.
-            If None, plots all object-type columns except 'Churn'.
-
-    Returns:
-        None
     """
+    Plot bar charts for OBJECT data columns
+    """
+
     if columns_to_plot is None:
-        columns_to_plot = [
-            col for col in df.select_dtypes(include=['object']).columns
-            if col != 'Churn'
-        ]
-    else:
-        columns_to_plot = [col for col in columns_to_plot if col in df.columns]
-    n_cols, n_rows = 3, (len(columns_to_plot) + 2) // 3
-    if n_rows == 0:
-        n_rows = 1
+        obj_df = df.select_dtypes(include='object')
+        columns_to_plot = obj_df.drop(['Churn'], axis=1)
+        columns_to_plot = columns_to_plot.columns.tolist()
 
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 5*n_rows))
+    grid_width = 3
+    grid_height = (len(columns_to_plot) - 1 + grid_width) // grid_width
 
-    if n_rows == 1 and n_cols == 1:
-        axes_flat = [axes]
-    else:
-        axes_flat = axes.flatten()
+    fig, axes = plt.subplots(grid_height,
+                             grid_width,
+                             figsize=(15, 5 * grid_height))
+    axes = axes.flatten()
 
     for i, col in enumerate(columns_to_plot):
-        ax = axes_flat[i]
         counts = df[col].value_counts()
-        ax.bar(counts.index.astype(str), counts.values)
-        ax.set_title(col)
-        ax.tick_params(axis='x', rotation=45)
 
-    # Hide any unused subplots
-    for j in range(i + 1, len(axes_flat)):
-        axes_flat[j].set_visible(False)
+        axes[i].bar(counts.index, counts.values)
+        axes[i].set_title(col)
+
+        axes[i].tick_params(axis='x', rotation=45)
+
+    for j in range(len(columns_to_plot), len(axes)):
+        fig.delaxes(axes[j])
 
     plt.tight_layout()
-    plt.savefig("Task_7.png")
     plt.show()
-
+    
     return None

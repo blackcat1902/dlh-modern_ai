@@ -5,26 +5,18 @@ import matplotlib.pyplot as plt
 
 
 def plot_correlation_heatmap(df):
-    """ Plot an annotated correlation heatmap for numeric columns.
-
-    Args:
-        df : Input DataFrame.
-
-    Returns:
-        None
     """
+    Compute correlation for numeric features
+    Plot using heatmap
+    """
+
     plt.figure(figsize=(6, 5))
-
-    ndf = df.select_dtypes(include=['float64', 'int64'])
-    corr_matrix = ndf.corr()
-
-    sns.heatmap(
-        corr_matrix,
-        annot=True,
-        cmap='coolwarm',
-        vmin=-1,
-        vmax=1
-        )
-
-    plt.title("Correlation Matrix")
+    corr = df.corr(numeric_only=True)
+    sns.heatmap(corr,
+                vmin=-1,
+                vmax=1,
+                annot=True,
+                cmap='coolwarm'
+                )
+    plt.title('Correlation Matrix')
     plt.show()

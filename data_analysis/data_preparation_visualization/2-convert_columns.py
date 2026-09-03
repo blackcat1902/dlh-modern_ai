@@ -1,13 +1,17 @@
-import pandas as pd
 #!/usr/bin/env python3
+"""
+Learn how to convert cols in the DataFrame to  appropriate data type.
+"""
+import pandas as pd
+
+
 def convert_columns(df):
-    # TotalCharges: boşlukları NaN yap
-    df['TotalCharges'] = df['TotalCharges'].replace(" ", pd.NA)
+    """
+    The modified DataFrame with converted column types.
+    """
 
-    # TotalCharges: numeric'e çevir
+
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
-
-    # SeniorCitizen: replace ile dönüştür (senin istediğin yol)
-    df['SeniorCitizen'] = df['SeniorCitizen'].replace({0: "No", 1: "Yes"})
+    df['SeniorCitizen'] = df['SeniorCitizen'].map({0: 'No', 1: 'Yes'})
 
     return df
