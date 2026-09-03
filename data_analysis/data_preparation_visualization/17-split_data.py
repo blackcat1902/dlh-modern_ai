@@ -11,13 +11,9 @@ def split_data(df,
                random_state=42):
     """
     Split dataframe into two parts:
-    - training set
-    - testing set
-    Well, assumption that some combination of input_df
-    (the entire initial df, but the tartet set)
-    results in target_set (single column)
+    - training 
+    - testing 
     """
-
     input_df = df.drop([target], axis=1)
     target_set = df[target]
 

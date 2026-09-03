@@ -1,6 +1,6 @@
-##!/usr/bin/env python3
+#!/usr/bin/env python3
 """
-Model is performing Chi-square test
+Model is performing Chi-square tes
 """
 import pandas as pd
 from scipy import stats

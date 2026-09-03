@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Module for plotting the distribution of the target variable Churn. """
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as pl
 
 
 def plot_churn_distribution(df):

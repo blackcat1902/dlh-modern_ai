@@ -2,7 +2,7 @@
 """
 Module plotting continuous distrib.
 """
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as pl
 import numpy as np
 from scipy import stats
 
@@ -32,7 +32,7 @@ def plot_continuous_distributions(df, columns_to_plot=None):
     for i, col in enumerate(columns_to_plot):
         data = df[col].dropna()
 
-        # Left Subplot
+        # Left Subplo
         left_sub = axes[i, 0]
         left_sub.hist(data,
                       bins=30,
@@ -45,11 +45,10 @@ def plot_continuous_distributions(df, columns_to_plot=None):
                       kde(x_range), color='red', ls='--')
         left_sub.set_title(f'{col} Histogram + KDE')
 
-        # Right Subplot
+        # Right Subplo
         right_sub = axes[i, 1]
         right_sub.boxplot(data, vert=False)
         right_sub.set_title(f'{col} Boxplot')
 
     plt.tight_layout()
     plt.show()
-    

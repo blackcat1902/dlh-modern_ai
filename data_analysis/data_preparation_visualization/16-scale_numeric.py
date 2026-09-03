@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Scale numerics. 
+Scale numerics.
 """
 from sklearn import preprocessing
 

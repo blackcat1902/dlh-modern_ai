@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """ Module for comparing numeric feature distributions by churn status.
 """
-#!/usr/bin/env python3
-"""
-Continuos numeric bars with churn
-"""
 import matplotlib.pyplot as plt
 
 
@@ -12,13 +8,12 @@ def plot_numeric_vs_churn(df, col):
     """
     Plots side-by-side histograms
     """
-
     plt.figure(figsize=(12, 8))
 
-    sit_puts = df[df['Churn'] == 'No'][col]
-    fuc_offs = df[df['Churn'] == 'Yes'][col]
+    no_churn = df[df['Churn'] == 'No'][col]
+    yes_churn = df[df['Churn'] == 'Yes'][col]
 
-    plt.hist([sit_puts, fuc_offs], bins=30, label=['No', 'Yes'])
+    plt.hist([no_churn, yes_churn], bins=30, label=['No', 'Yes'])
 
     plt.title(f'{col} Distribution by Churn')
     plt.xlabel(f'{col}')

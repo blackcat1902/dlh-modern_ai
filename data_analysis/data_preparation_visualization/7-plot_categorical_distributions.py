@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module for plotting continuous numerical feature distributions.
 """
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as pl
 
 
 def plot_categorical_distributions(df, columns_to_plot=None):
@@ -35,5 +35,5 @@ def plot_categorical_distributions(df, columns_to_plot=None):
 
     plt.tight_layout()
     plt.show()
-    
+
     return None

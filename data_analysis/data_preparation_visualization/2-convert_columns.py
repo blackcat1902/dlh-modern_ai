@@ -9,8 +9,6 @@ def convert_columns(df):
     """
     The modified DataFrame with converted column types.
     """
-
-
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
     df['SeniorCitizen'] = df['SeniorCitizen'].map({0: 'No', 1: 'Yes'})
 

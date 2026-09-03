@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """ Module for plotting churn rate per category for a categorical column.
 """
-import pandas as pt
-import matplotlib.pyplot as plt
+import pandas as p
+import matplotlib.pyplot as pl
 
 
 def plot_categorical_vs_churn(df, col):
@@ -26,4 +26,3 @@ def plot_categorical_vs_churn(df, col):
     plt.xticks(rotation=45)
 
     plt.show()
-    

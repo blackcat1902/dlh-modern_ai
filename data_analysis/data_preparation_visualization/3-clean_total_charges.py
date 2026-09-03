@@ -3,9 +3,9 @@
 Handles missing values in a column of the DataFrame
 """
 
+
 def clean_total_charges(df, method='drop'):
     """Handles missings in total_charges field"""
-    
     df = df.copy()
 
     if method == 'drop':

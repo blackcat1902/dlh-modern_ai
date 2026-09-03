@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module for plotting correlation heatmap """
 import seaborn as sns
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as pl
 
 
 def plot_correlation_heatmap(df):
