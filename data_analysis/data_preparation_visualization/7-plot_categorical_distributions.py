@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """ Module for plotting continuous numerical feature distributions.
 """
-import matplotlib.pyplot as pl
+import matplotlib.pyplot as plt
 
 
 def plot_categorical_distributions(df, columns_to_plot=None):
     """
-    Plot bar charts for OBJECT data columns
+    Plot bar charts for data columns
     """
 
     if columns_to_plot is None:

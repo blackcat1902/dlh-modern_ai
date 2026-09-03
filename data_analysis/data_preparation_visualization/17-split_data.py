@@ -11,8 +11,8 @@ def split_data(df,
                random_state=42):
     """
     Split dataframe into two parts:
-    - training 
-    - testing 
+    - training
+    - testing
     """
     input_df = df.drop([target], axis=1)
     target_set = df[target]
