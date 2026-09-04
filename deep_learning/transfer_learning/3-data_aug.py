@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-A Keras Sequential model that applies random data augmentation to training images.
+A Keras Sequential model that applies 
+random data augmentation to training images.
 """
 import tensorflow as tf
 

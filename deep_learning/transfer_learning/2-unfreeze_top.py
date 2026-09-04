@@ -6,9 +6,9 @@ Unfreezes the last n_layers of the base CNN model.
 
 def unfreeze_top_layers(model, n_layers):
     """
-    Unfreezes the last n_layers of the base CNN model inside the main model.
+    Unfreezes the last n_layers of the base CNN model.
     """
-    base_model = model.layers[0]
+    base_model = model
     base_model.trainable = True
 
     if n_layers <= 0:
