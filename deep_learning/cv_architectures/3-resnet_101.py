@@ -8,9 +8,7 @@ bottleneck_block = __import__('2-bottleneck_block').bottleneck_block
 
 def make_layer(x, blocks, filters, stride=1, name=None):
     """
-    Stacks bottleneck blocks into a single stage,
-    downsampling on the first block and keeping
-    the rest at identity shortcuts
+    Creates a stage by stacking bottleneck blocks.
     """
     x = bottleneck_block(x, filters, stride=stride, downsample=True,
                           name=f'{name}_block1')
@@ -22,9 +20,7 @@ def make_layer(x, blocks, filters, stride=1, name=None):
 
 def build_resnet101(input_shape=(224, 224, 3), num_classes=1000):
     """
-    Builds the ResNet-101 architecture with an
-    initial conv/pool stem, four stages of
-    bottleneck blocks, and a classification head
+    Builds the ResNet-101 architecture.
     """
     inputs = keras.Input(shape=input_shape)
 
