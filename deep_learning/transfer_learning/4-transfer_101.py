@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Trains and saves a Transfer Learning model for the Caltech101 dataset.
+Trains and saves a Transfer Learning 
+model for the Caltech101 dataset.
 """
 import tensorflow as tf
 from tensorflow import keras
@@ -111,5 +112,3 @@ def train_transfer_model():
 
     model.save("caltech101_model.h5")
     print("Model saved to caltech101_model.h5")
-
-    return model
