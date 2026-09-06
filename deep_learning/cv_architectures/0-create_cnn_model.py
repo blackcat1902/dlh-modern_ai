@@ -1,34 +1,30 @@
 #!/usr/bin/env python3
-"""
-Stack convolutions and let them see
-"""
+"""Computer Vision Architectures.
+This module provides functions for building, customizing, and training
+convolutional neural network (CNN) architectures in Keras."""
 from tensorflow import keras
 
 
-def create_cnn_model(input_shape, filters, kernel_sizes, activations,
-                     pooling_type='max'):
-    """
-    Builds a CNN model from a list of
-    filters, kernel_sizes and activations,
-    applying a pooling layer after each
-    convolutional layer
-    """
-    pooling_layer = (keras.layers.MaxPooling2D if pooling_type == 'max'
-                     else keras.layers.AveragePooling2D)
-
+def create_cnn_model(input_shape, filters, kernel_sizes,
+                     activations, pooling_type='max'):
+    """Creates and compiles a Keras CNN model with
+    customizable layers and pooling."""
     model = keras.Sequential()
-    model.add(keras.Input(shape=input_shape))
+    model.add(keras.layers.Input(shape=input_shape))
 
-    for i in range(len(filters)):
-        filters_i = filters[i]
-        kernel_size = kernel_sizes[i]
-        activation = activations[i]
-
-        model.add(keras.layers.Conv2D(
-            filters_i, kernel_size, activation=activation))
-        model.add(pooling_layer(2))
+    for f, k, a in zip(filters, kernel_sizes, activations):
+        model.add(keras.layers.Conv2D(filters=f, kernel_size=k,
+                                      activation=a))
+        if pooling_type == 'max':
+            model.add(keras.layers.MaxPooling2D(pool_size=(2, 2)))
+        elif pooling_type == 'avg':
+            model.add(keras.layers.AveragePooling2D(pool_size=(2, 2)))
 
     model.add(keras.layers.Flatten())
-    model.add(keras.layers.Dense(10))
+    model.add(keras.layers.Dense(10, activation='softmax'))
+
+    model.compile(optimizer='adam',
+                  loss='sparse_categorical_crossentropy',
+                  metrics=['accuracy'])
 
     return model
