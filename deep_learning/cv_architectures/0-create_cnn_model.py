@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Computer Vision Architectures.
-This module provides functions for building, customizing, and training
-convolutional neural network (CNN) architectures in Keras."""
+Provides functional tools to build, fine-tune, and train
+Keras-based convolutional neural network (CNN) models."""
 from tensorflow import keras
 
 
