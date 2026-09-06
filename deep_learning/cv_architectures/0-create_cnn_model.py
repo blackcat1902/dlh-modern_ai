@@ -6,7 +6,7 @@ from tensorflow import keras
 
 
 def create_cnn_model(input_shape, filters, kernel_sizes, activations,
-                      pooling_type='max'):
+                     pooling_type='max'):
     """
     Builds a CNN model from a list of
     filters, kernel_sizes and activations,
@@ -14,7 +14,7 @@ def create_cnn_model(input_shape, filters, kernel_sizes, activations,
     convolutional layer
     """
     pooling_layer = (keras.layers.MaxPooling2D if pooling_type == 'max'
-                      else keras.layers.AveragePooling2D)
+                     else keras.layers.AveragePooling2D)
 
     model = keras.Sequential()
     model.add(keras.Input(shape=input_shape))
