@@ -1,4 +1,4 @@
-!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Clean text data from PII, emoji,
 normalise text messages.
